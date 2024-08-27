@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Usuarios</h1>
+        <form id="userForm">
+            <label for="tipoDocumento">Tipo de Documento:</label>
+            <input type="text" id="tipoDocumento" name="tipoDocumento" required>
+
+            <label for="numeroDocumento">Número de Documento:</label>
+            <input type="text" id="numeroDocumento" name="numeroDocumento" required>
+
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" required>
+
+            <label for="correoElectronico">Correo Electrónico:</label>
+            <input type="email" id="correoElectronico" name="correoElectronico" required>
+
+            <button type="submit">Registrar Usuario</button>
+        </form>
+        <div id="userList"></div>
+    </div>
+    <script src="User.js"></script>
+</body>
+</html>
