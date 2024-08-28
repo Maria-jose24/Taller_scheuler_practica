@@ -17,34 +17,35 @@ import com.example.scheuler.model.Usuario;
 import com.example.scheuler.service.UsuarioService;
 
 @RestController
-@RequestMapping("/api/v1/usuario")
+@RequestMapping("/api/v1/usuario/")
 public class UsuarioController {
-	 @Autowired
-	    private IUsuarioService UsuarioService;
+	 
+	@Autowired
+    private IUsuarioService UsuarioService;
 
-	    @GetMapping
-	    public List<Usuario> getUsuario() {
-	        return UsuarioService.findAll();
-	    }
+    @GetMapping
+    public List<Usuario> getUsuario() {
+        return UsuarioService.findAll();
+    }
 
-	    @GetMapping("/{id}")
-	    public Optional<Usuario> getUsuarioById(@PathVariable Long id) {
-	        return UsuarioService.findById(id);
-	    }
+    @GetMapping("/{id}")
+    public Optional<Usuario> getUsuarioById(@PathVariable String id) {
+        return UsuarioService.findById(id);
+    }
 
-	    @PostMapping
-	    public Usuario crearUsuario(@RequestBody Usuario usuario) {
-	        return UsuarioService.save(usuario);
-	    }
+    @PostMapping
+    public Usuario crearUsuario(@RequestBody Usuario usuario) {
+        return UsuarioService.save(usuario);
+    }
 
-	    @PutMapping("/{id}")
-	    public Usuario actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
-	        usuario.setId(id);
-	        return UsuarioService.save(usuario);
-	    }
+    @PutMapping("/{id}")
+    public Usuario actualizarUsuario(@PathVariable String id, @RequestBody Usuario usuario) {
+        usuario.setIdUsuario(id);
+        return UsuarioService.save(usuario);
+    }
 
-	    @DeleteMapping("/{id}")
-	    public void eliminarUsuario(@PathVariable Long id) {
-	        UsuarioService.deleteById(id);
-	    }
-	}
+    @DeleteMapping("/{id}")
+    public void eliminarUsuario(@PathVariable String id) {
+        UsuarioService.deleteForever(id);
+    }
+}

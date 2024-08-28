@@ -5,11 +5,12 @@ import java.util.Optional;
 import com.example.scheuler.model.Usuario;
 
 public interface IUsuarioService {
-	 List<Usuario> findAll();
-	    Optional<Usuario> findById(Long id);
-	    Optional<Usuario> findByCorreoElectronico(String correoElectronico);
-	    Usuario save(Usuario usuario);
-	    void deleteById(Long id);
-	    void notifyUser(Usuario usuario);
-	    void bloquearUsuario(Usuario usuario);
+	
+	Usuario save(Usuario usuario);
+
+    List<Usuario> findAll();
+
+    Optional<Usuario> findById(String id);
+
+    void deleteForever(String id);
 }

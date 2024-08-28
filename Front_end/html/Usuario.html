@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuarios</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid mt-5">
+        <!-- Título centrado -->
+        <div class="page-header">
+            <h1>Gestión de Usuario</h1>
+        </div>
+        <!-- Contenedor para el botón -->
+        <div class="btn-container">
+            <p class="mr-2">¿Deseas añadir un nuevo usuario?</p>
+            <button type="button" class="btn btn-primary" id="button-addon3" data-toggle="modal"
+                onclick="registrarUsuarioBandera=true; limpiar();" data-target="#exampleModal">
+                <i class="fas fa-plus"></i> Añadir Usuario
+            </button>
+        </div>
+        <!-- Contenedor para la tabla -->
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-primary">
+                    <tr>
+                        <th class="text-center align-middle">Tipo de documento</th>
+                        <th class="text-center align-middle">N° Documento</th>
+                        <th class="text-center align-middle">Fecha de nacimiento</th>
+                        <th class="text-center align-middle">Fecha de última actualización de contraseña</th>
+                        <th class="text-center align-middle">Fecha último inicio de sesión</th>
+                        <th class="text-center align-middle">Correo electrónico</th>
+                        <th class="text-center align-middle">Estado</th>
+                        <th class="text-center align-middle">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-custom">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="row needs-validation">
+                        <div class="form-group col-md-6">
+                            <label for="td">Tipo de documento</label>
+                            <select class="form-control" id="td" onfocusout="validartipoDocumento(this)" required>
+                                <option value="" disabled selected>Seleccionar Tipo de Documento</option>
+                                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                <option value="Cedula de ciudadania">Cédula de ciudadanía</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="documento">N° Documento</label>
+                            <input type="text" class="form-control" id="documento" placeholder="N° Documento"
+                                onfocusout="validarnDocumento(this)" onkeypress="soloNumeros(event);" required>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="correo_electronico">Correo Electrónico</label>
+                            <input type="text" class="form-control" id="correo_electronico"
+                                placeholder="Correo Electrónico" onfocusout="validarcorreo_electronico(this)"
+                                onkeypress="alfaNumericosSignos(event);" required>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="contrasena">Contraseña</label>
+                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña"
+                                onfocusout="validarcontrasena(this)" onkeypress="alfaNumericosSignos(event);" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="fecha_nacimiento"
+                                placeholder="Fecha de nacimiento" onfocusout="validarfecha_nacimiento(this)" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fecha_ultima_actualizacion_contrasena">Fecha de última actualización de
+                                contraseña</label>
+                            <input type="date" class="form-control" id="fecha_ultima_actualizacion_contrasena"
+                                placeholder="Fecha de ultima actualización"
+                                onfocusout="validarfecha_ultima_actualizacion_contrasena(this)" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fecha_ultimo_inicio_sesion">Fecha último inicio de sesión</label>
+                            <input type="date" class="form-control" id="fecha_ultimo_inicio_sesion"
+                                placeholder="Fecha último inicio de sesión"
+                                onfocusout="validarfecha_ultimo_inicio_sesion(this)" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="estado">Estado</label>
+                            <select class="form-control" id="estado" onfocusout="validarEstado(this)" required>
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="registrarUsuario();">Registrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/Usuario.js"></script>
+</body>
+
+</html>

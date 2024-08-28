@@ -8,35 +8,35 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity(name="Usuario")
+@Entity(name="usuario")
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "idUsuario", nullable = false, length = 36)
+    private String idUsuario;
     
-    @Column(name = "tipo_documento", nullable = false, length = 50)
+    @Column(name = "tipo_documento", nullable = false, length = 3)
     private String tipoDocumento;
 
-    @Column(name = "numero_documento", nullable = false, unique = true, length = 10)
+    @Column(name = "numero_documento", nullable = false, length = 11)
     private String numeroDocumento;
 
-    @Column(name = "fecha_nacimiento", nullable = false)
+    @Column(name = "fecha_nacimiento", nullable = false, length = 15)
     private LocalDate fechaNacimiento;
 
-    @Column(name = "contrasena", nullable = false, length = 100)
+    @Column(name = "contrasena", nullable = false )
     private String contrasena;
 
-    @Column(name = "fecha_ultima_actualizacion_contrasena", nullable = true)
+    @Column(name = "fecha_ultima_actualizacion_contrasena", nullable = false, length = 15)
     private LocalDate fechaUltimaActualizacionContrasena;
 
-    @Column(name = "fecha_ultimo_inicio_sesion", nullable = true)
+    @Column(name = "fecha_ultimo_inicio_sesion", nullable = false, length = 15)
     private LocalDate fechaUltimoInicioSesion;
 
     @Column(name = "estado", nullable = false, length = 20)
     private String estado;
 
-    @Column(name = "correo_electronico", nullable = false, unique = true, length = 100)
+    @Column(name = "correo_electronico", nullable = false, length = 100)
     private String correoElectronico;
 
     @Column(name = "notificado", nullable = false)
@@ -46,11 +46,11 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(Long id, String tipoDocumento, String numeroDocumento, LocalDate fechaNacimiento, String contrasena,
-			LocalDate fechaUltimaActualizacionContrasena, LocalDate fechaUltimoInicioSesion, String estado,
-			String correoElectronico, boolean notificado) {
+	public Usuario(String idUsuario, String tipoDocumento, String numeroDocumento, LocalDate fechaNacimiento,
+			String contrasena, LocalDate fechaUltimaActualizacionContrasena, LocalDate fechaUltimoInicioSesion,
+			String estado, String correoElectronico, boolean notificado) {
 		super();
-		this.id = id;
+		this.idUsuario = idUsuario;
 		this.tipoDocumento = tipoDocumento;
 		this.numeroDocumento = numeroDocumento;
 		this.fechaNacimiento = fechaNacimiento;
@@ -62,12 +62,12 @@ public class Usuario {
 		this.notificado = notificado;
 	}
 
-	public Long getId() {
-		return id;
+	public String getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getTipoDocumento() {

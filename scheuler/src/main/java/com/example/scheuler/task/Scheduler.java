@@ -1,17 +1,17 @@
 package com.example.scheuler.task;
 
-import java.time.LocalDate;
+/*import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import com.example.scheuler.interfaceService.IUsuarioService;
 import com.example.scheuler.model.Usuario;
 import com.example.scheuler.service.UsuarioService;
 
-import java.util.List;
+import java.util.List;*/
 
 public class Scheduler {
 	
-	@Autowired
+	/*@Autowired
     private IUsuarioService usuarioService;
 
     @Autowired
@@ -41,5 +41,5 @@ public class Scheduler {
                 UsuarioService.bloquearUsuario(usuario);
             }
         }
-    }
+    }*/
 }

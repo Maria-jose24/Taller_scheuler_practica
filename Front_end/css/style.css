@@ -1,52 +1,99 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* Estilos personalizados para el modal */
+.modal-custom {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: #f0f8ff; /* Alice Blue */
+}
+
+.modal-header {
+    background-color: #4a90e2; /* Blue */
+    color: #fff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.modal-footer {
+    border-top: none;
+    padding-top: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
     color: #333;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    display: block;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #4a90e2; /* Blue */
+    border-color: #000; /* Borde negro para el botón */
+    border-radius: 20px;
+    border: 2px solid #000; /* Borde negro para el botón */
+}
+
+.btn-primary:hover {
+    background-color: #357ABD; /* Darker Blue */
+    border-color: #000; /* Borde negro para el botón en hover */
+}
+
+/* Estilo para eliminar el icono de + en el botón */
+.btn-primary i.fas.fa-plus {
+    display: none; /* Oculta el icono */
+}
+
+.modal-body {
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    text-align: center;
-    color: #444;
+.modal-footer {
+    justify-content: center;
+    padding-bottom: 20px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+.table-responsive {
+    overflow-x: auto;
 }
 
-label {
-    margin-bottom: 5px;
-    font-weight: bold;
+/* Estilos para la tabla */
+.table {
+    border: 2px solid #000; /* Borde negro para la tabla */
+    border-radius: 5px; /* Bordes redondeados opcionales */
 }
 
-input {
-    margin-bottom: 15px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.table thead th {
+    white-space: nowrap;
+    background-color: #4a90e2; /* Blue */
+    color: #000; /* Texto negro para los encabezados */
+    border-bottom: 2px solid #000; /* Línea negra de separación debajo del encabezado */
 }
 
-button {
-    padding: 10px;
-    background-color: #28a745;
+.table tbody tr {
+    border-bottom: 1px solid #000; /* Línea negra separadora entre filas */
+}
+
+.table thead th + th {
+    border-left: 1px solid #000; /* Línea negra separadora entre columnas del encabezado */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9; /* Light Grey */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #eaf3ff; /* Light Blue */
+}
+
+.btn-outline-primary {
+    color: #4a90e2; /* Blue */
+    border-color: #4a90e2; /* Blue */
+}
+
+.btn-outline-primary:hover {
+    background-color: #4a90e2; /* Blue */
     color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-#userList {
-    margin-top: 20px;
 }
