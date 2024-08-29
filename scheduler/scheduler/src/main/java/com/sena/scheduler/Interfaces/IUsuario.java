@@ -13,12 +13,14 @@ public interface IUsuario extends CrudRepository <Usuario, String>{
     List<Usuario> filtroUsuario(String filtro);
 
     @Query ("SELECT u FROM usuario u WHERE DATEDIFF( u.fechaNacimiento, NOW())>=18 AND td = 'TI'")
-    List<Usuario> cambiarTipoDocumento(String cambiarTipoDocumento);
+    List<Usuario> cambiarTipoDocumento();
 
     @Query("SELECT u FROM usuario u WHERE  DATEDIFF(NOW(), u.fechaUltimaActualizacionContrasena) >= 90")
-    List<Usuario> actualizarContraseña(String actualizarContraseña);
+    List<Usuario> actualizarContrasena();
 
     @Query("SELECT u FROM usuario u WHERE  DATEDIFF(NOW(), u.fechaUltimoInicioSesion) >= 30")
-    List<Usuario> iniciosesionNotificar(String iniciosesionNotificar);
+    List<Usuario> iniciosesionNotificar();
 
+    @Query("SELECT u FROM usuario u WHERE TIMESTAMDIFF(MINUTE, u.notificado, CURRENT_TIMESTAMP)=1")
+    List<Usuario>notificacionRegistro();
 }

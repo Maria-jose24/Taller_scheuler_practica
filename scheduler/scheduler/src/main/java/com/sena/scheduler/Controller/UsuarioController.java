@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sena.scheduler.InterfacesService.IUsuarioService;
 import com.sena.scheduler.Models.Usuario;
-import com.sena.scheduler.Service.emailService;
 
 @RestController
 @RequestMapping("/api/v1/usuario/")
@@ -28,14 +26,9 @@ public class UsuarioController {
 	@Autowired
     private IUsuarioService UsuarioService;
 	
-	@Autowired
-	private emailService emailService;
-	
-
 	@PostMapping("/")
     public ResponseEntity<Object> save (@ModelAttribute("Usuario") Usuario usuario){
         UsuarioService.save(usuario);
-        emailService.enviarCorreoBienvenida(usuario.getCorreoElectronico());
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
     
@@ -60,7 +53,7 @@ public class UsuarioController {
     @DeleteMapping("/eliminarUsuario/{id}")
     public ResponseEntity<Object> deleteForever(@PathVariable String id) {
         UsuarioService.deleteForever(id);
-        return new ResponseEntity<>("Libro eliminado Permanentemente", HttpStatus.OK);
+        return new ResponseEntity<>("Usuario eliminado correctamente", HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
@@ -83,8 +76,7 @@ public class UsuarioController {
             return new ResponseEntity<>(usuario, HttpStatus.OK);
 
         } else {
-            return new ResponseEntity<>("Error usuario No encontrado", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error usuario no encontrado", HttpStatus.BAD_REQUEST);
         }
     }
-
 }

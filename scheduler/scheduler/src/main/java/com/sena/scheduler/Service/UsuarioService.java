@@ -41,31 +41,33 @@ public class UsuarioService implements IUsuarioService {
     }
 
     // Filtro
-    
     @Override
     public List<Usuario> filtroUsuario(String filtro) {
         List<Usuario> listaUsuario = data.filtroUsuario(filtro);
         return listaUsuario;
     }
-
     
     @Override
-    public List<Usuario> cambiarTipoDocumento(String cambiarTipoDocumento) {
-        List<Usuario> listaUsuario = data.cambiarTipoDocumento(cambiarTipoDocumento);
+    public List<Usuario> cambiarTipoDocumento() {
+        List<Usuario> listaUsuario = data.cambiarTipoDocumento();
         return listaUsuario;
     }
 
-    
     @Override
-    public List<Usuario> actualizarContraseña(String actualizarContraseña) {
-        List<Usuario> listaUsuario = data.actualizarContraseña(actualizarContraseña);
+    public List<Usuario> actualizarContrasena() {
+        List<Usuario> listaUsuario = data.actualizarContrasena();
         return listaUsuario;
     }
-
     
     @Override
-    public List<Usuario> iniciosesionNotificar(String iniciosesionNotificar) {
-        List<Usuario> listaUsuario = data.iniciosesionNotificar(iniciosesionNotificar);
+    public List<Usuario> iniciosesionNotificar() {
+        List<Usuario> listaUsuario = data.iniciosesionNotificar();
         return listaUsuario;
+    }
+    
+    @Override
+    public List<Usuario> notificacionRegistro(){
+    	List<Usuario> listaUsuario = data.notificacionRegistro();
+    	return listaUsuario;
     }
 }

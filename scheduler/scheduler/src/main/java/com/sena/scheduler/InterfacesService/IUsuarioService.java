@@ -17,9 +17,10 @@ public interface IUsuarioService {
     
     //Filtro
     
+    
     public List<Usuario> filtroUsuario(String filtro);
-    public List<Usuario> cambiarTipoDocumento(String cambiarTipoDocumento);
-    public List<Usuario> actualizarContraseña(String actualizarContraseña);
-    public List<Usuario> iniciosesionNotificar(String iniciosesionNotificar);
- 
+    public List<Usuario> cambiarTipoDocumento();
+    public List<Usuario> actualizarContrasena();
+    public List<Usuario> iniciosesionNotificar();
+    public List<Usuario> notificacionRegistro();
 }

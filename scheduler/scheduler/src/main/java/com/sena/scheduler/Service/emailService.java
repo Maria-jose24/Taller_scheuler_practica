@@ -5,6 +5,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.sena.scheduler.Models.Usuario;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
@@ -14,12 +15,12 @@ public class emailService {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-	public String enviarCorreoBienvenida(String destinatario, String nombre) {
+	public String notificacionRegistro(Usuario usuario) {
 		try {
 			String asunto = "¡Bienvenid@ a Nuestra Plataforma!";
 			String cuerpo = "<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">\r\n"
 					+ "<div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">\r\n"
-					+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola " + nombre + "!</h1>\r\n"
+					+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola!</h1>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Estamos emocionados de darte la bienvenida a nuestra plataforma.</p>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Nuestra plataforma está diseñada para ofrecerte la mejor experiencia posible.</p>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">No dudes en explorar todas las funciones y contactarnos si necesitas ayuda.</p>\r\n"
@@ -30,9 +31,9 @@ public class emailService {
 					+ "</div>\r\n"
 					+ "</body>";
 
-			var retorno=enviarCorreo(destinatario,asunto,cuerpo);
+			var retorno=enviarCorreo(usuario.getCorreoElectronico(),asunto,cuerpo);
 			if(retorno) {
-				return "se envió correctamente";
+				return "Se envió correctamente";
 			}else {
 				return "No se pudo envíar";
 			}
@@ -43,12 +44,12 @@ public class emailService {
 		}
 	}
 
-	public String iniciosesionNotificar(String destinatario, String nombre) {
+	public String iniciosesionNotificar(Usuario usuario) {
 		try {
 			String asunto = "Inicia sesión para evitar el bloqueo de tu cuenta";
 			String cuerpo = "<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">\r\n"
 					+ "<div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">\r\n"
-					+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola " + nombre + "!</h1>\r\n"
+					+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola!</h1>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Para mantener tu cuenta activa, por favor inicia sesión regularmente.</p>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Si no inicias sesión en los próximos días, tu cuenta podría ser bloqueada.</p>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Accede ahora y evita cualquier inconveniente.</p>\r\n"
@@ -59,9 +60,9 @@ public class emailService {
 					+ "</div>\r\n"
 					+ "</body>";
 
-			var retorno=enviarCorreo(destinatario,asunto,cuerpo);
+			var retorno=enviarCorreo(usuario.getCorreoElectronico(),asunto,cuerpo);
 			if(retorno) {
-				return "se envió correctamente";
+				return "Se envió correctamente";
 			}else {
 				return "No se pudo envíar";
 			}
@@ -72,12 +73,12 @@ public class emailService {
 		}
 	}
 
-	public String actualizarContraseña(String destinatario, String nombre) {
+	public String actualizarContraseña(Usuario usuario) {
 		try {
 			String asunto = "Actualiza tu contraseña";
 			String cuerpo = "<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">\r\n"
 					+ "<div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">\r\n"
-					+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola " + nombre + "!</h1>\r\n"
+					+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola!</h1>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Es hora de actualizar tu contraseña para mantener tu cuenta segura.</p>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Te recomendamos hacer esto cada cierto tiempo para proteger tu información.</p>\r\n"
 					+ "  <p style=\"font-size: 16px; color: #555555;\">Accede a tu cuenta y cambia tu contraseña en la sección de configuración.</p>\r\n"
@@ -89,9 +90,9 @@ public class emailService {
 					+ "</body>";
 
 
-			var retorno=enviarCorreo(destinatario,asunto,cuerpo);
+			var retorno=enviarCorreo(usuario.getCorreoElectronico(),asunto,cuerpo);
 			if(retorno) {
-				return "se envió correctamente";
+				return "Se envió correctamente";
 			}else {
 				return "No se pudo envíar";
 			}
@@ -102,12 +103,12 @@ public class emailService {
 		}
 	}
 
-	public String cambiarTipoDocumento(String destinatario, String nombre) {
+	public String cambiarTipoDocumento(Usuario usuario) {
 		try {
 		String asunto = "Es hora de actualizar tu tipo de documento";
 		String cuerpo = "<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;\">\r\n"
 				+ "<div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">\r\n"
-				+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola " + nombre + "!</h1>\r\n"
+				+ "  <h1 style=\"font-size: 24px; font-weight: bold; color: #4a90e2;\">¡Hola!</h1>\r\n"
 				+ "  <p style=\"font-size: 16px; color: #555555;\">Queremos recordarte que es el momento de actualizar tu tipo de documento.</p>\r\n"
 				+ "  <p style=\"font-size: 16px; color: #555555;\">Es un proceso rápido que te ayudará a mantener tus datos al día.</p>\r\n"
 				+ "  <p style=\"font-size: 16px; color: #555555;\">Por favor, accede a tu cuenta y realiza la actualización lo antes posible.</p>\r\n"
@@ -118,9 +119,9 @@ public class emailService {
 				+ "</div>\r\n"
 				+ "</body>";
 
-		 var retorno=enviarCorreo(destinatario,asunto,cuerpo);
+		 var retorno=enviarCorreo(usuario.getCorreoElectronico(),asunto,cuerpo);
          if(retorno) {
-             return "se envió correctamente";
+             return "Se envió correctamente";
          }else {
              return "No se pudo envíar";
          }
