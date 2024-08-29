@@ -97,3 +97,13 @@
     background-color: #4a90e2; /* Blue */
     color: #fff;
 }
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
