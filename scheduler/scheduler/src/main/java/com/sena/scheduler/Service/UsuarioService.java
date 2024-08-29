@@ -17,22 +17,55 @@ public class UsuarioService implements IUsuarioService {
     private IUsuario data;
 
     @Override
-    public Usuario save(Usuario usuario) {
-        return data.save(usuario);
+    public String save(Usuario usuario) {
+        data.save(usuario);
+        return usuario.getId();
     }
 
     @Override
-    public List<Usuario> findAll() {
-        return (List<Usuario>) data.findAll();
+    public List<Usuario> findAll(){
+        List<Usuario> listaUsuario = (List<Usuario>) data.findAll();
+        return listaUsuario;
     }
 
     @Override
-    public Optional<Usuario> findById(String id) {
-        return data.findById(id);
+    public Optional<Usuario> findOne(String id){
+        Optional<Usuario> usuario = data.findById(id);
+        return usuario;
     }
 
     @Override
-    public void deleteForever(String id) {
+    public int deleteForever(String id){
         data.deleteById(id);
+        return 1;
+    }
+
+    // Filtro
+    
+    @Override
+    public List<Usuario> filtroUsuario(String filtro) {
+        List<Usuario> listaUsuario = data.filtroUsuario(filtro);
+        return listaUsuario;
+    }
+
+    
+    @Override
+    public List<Usuario> cambiarTipoDocumento(String cambiarTipoDocumento) {
+        List<Usuario> listaUsuario = data.cambiarTipoDocumento(cambiarTipoDocumento);
+        return listaUsuario;
+    }
+
+    
+    @Override
+    public List<Usuario> actualizarContraseña(String actualizarContraseña) {
+        List<Usuario> listaUsuario = data.actualizarContraseña(actualizarContraseña);
+        return listaUsuario;
+    }
+
+    
+    @Override
+    public List<Usuario> iniciosesionNotificar(String iniciosesionNotificar) {
+        List<Usuario> listaUsuario = data.iniciosesionNotificar(iniciosesionNotificar);
+        return listaUsuario;
     }
 }

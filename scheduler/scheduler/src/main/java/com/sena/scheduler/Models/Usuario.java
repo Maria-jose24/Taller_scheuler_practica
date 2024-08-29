@@ -13,14 +13,17 @@ public class Usuario {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "idUsuario", nullable = false, length = 36)
-    private String idUsuario;
+    @Column(name = "id", nullable = false, length = 36)
+    private String id;
     
     @Column(name = "tipo_documento", nullable = false, length = 3)
     private String tipoDocumento;
 
     @Column(name = "numero_documento", nullable = false, length = 11)
     private String numeroDocumento;
+    
+    @Column(name = "nombre", nullable = false, length = 50)
+    private String nombre;
 
     @Column(name = "fecha_nacimiento", nullable = false, length = 15)
     private LocalDate fechaNacimiento;
@@ -47,28 +50,29 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(String idUsuario, String tipoDocumento, String numeroDocumento, LocalDate fechaNacimiento,
-			String contrasena, LocalDate fechaUltimaActualizacionContrasena, LocalDate fechaUltimoInicioSesion,
-			String estado, String correoElectronico, boolean notificado) {
+	public Usuario(String id, String tipoDocumento, String numeroDocumento, String nombre,
+			LocalDate fechaNacimiento, String contrasena, LocalDate fechaUltimaActualizacionContrasena,
+			LocalDate fechaUltimoInicioSesion, String estado, String correoElectronico, boolean notificado) {
 		super();
-		this.idUsuario = idUsuario;
+		this.id = id;
 		this.tipoDocumento = tipoDocumento;
 		this.numeroDocumento = numeroDocumento;
+		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.contrasena = contrasena;
 		this.fechaUltimaActualizacionContrasena = fechaUltimaActualizacionContrasena;
 		this.fechaUltimoInicioSesion = fechaUltimoInicioSesion;
 		this.estado = estado;
-        this.correoElectronico = correoElectronico;
+		this.correoElectronico = correoElectronico;
 		this.notificado = notificado;
 	}
 
-	public String getIdUsuario() {
-		return idUsuario;
+	public String getId() {
+		return id;
 	}
 
-	public void setIdUsuario(String idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getTipoDocumento() {
@@ -85,6 +89,14 @@ public class Usuario {
 
 	public void setNumeroDocumento(String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public LocalDate getFechaNacimiento() {
@@ -128,12 +140,12 @@ public class Usuario {
 	}
 
 	public String getCorreoElectronico() {
-        return correoElectronico;
-    }
+		return correoElectronico;
+	}
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
 
 	public boolean isNotificado() {
 		return notificado;

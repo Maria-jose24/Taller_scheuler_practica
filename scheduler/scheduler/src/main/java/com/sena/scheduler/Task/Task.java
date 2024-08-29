@@ -1,24 +1,20 @@
 package com.sena.scheduler.Task;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.sena.scheduler.InterfacesService.IUsuarioService;
-import com.sena.scheduler.Models.Usuario;
+import com.sena.scheduler.Service.UsuarioService;
 import com.sena.scheduler.Service.emailService;
-
 
 @Component
 public class Task {
-
+	
 	@Autowired
-    private IUsuarioService UsuarioService;
+	private UsuarioService data;
+	
+	@Autowired emailService email;
+
+    /*private IUsuarioService UsuarioService;
 
     @Autowired
     private emailService emailService;
@@ -97,5 +93,5 @@ public class Task {
         mailMessage.setSubject("Recordatorio del sistema");
         mailMessage.setText(mensaje);
         emailService.sendEmail(mailMessage);
-    }
+    }*/
 }

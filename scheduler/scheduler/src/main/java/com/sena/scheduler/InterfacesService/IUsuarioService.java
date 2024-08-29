@@ -6,11 +6,20 @@ import java.util.Optional;
 import com.sena.scheduler.Models.Usuario;
 
 public interface IUsuarioService {
-	Usuario save(Usuario usuario);
+	
+	public String save(Usuario usuario);
 
-    List<Usuario> findAll();
+    public List<Usuario> findAll();
 
-    Optional<Usuario> findById(String id);
+    public 	Optional<Usuario> findOne(String id);
 
-    void deleteForever(String id);
+    public int deleteForever(String id);
+    
+    //Filtro
+    
+    public List<Usuario> filtroUsuario(String filtro);
+    public List<Usuario> cambiarTipoDocumento(String cambiarTipoDocumento);
+    public List<Usuario> actualizarContraseña(String actualizarContraseña);
+    public List<Usuario> iniciosesionNotificar(String iniciosesionNotificar);
+ 
 }
